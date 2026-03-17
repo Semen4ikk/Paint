@@ -1,7 +1,8 @@
 import {useEffect, useRef, useState} from "react";
 import {useSelector} from "react-redux";
-import type {RootState} from "../app/store/store.ts";
-import {PointButton} from "../shared/PointButton.tsx";
+import type {RootState} from "../../app/store/store.ts";
+import {PointButton} from "../../shared/PointButton/PointButton.tsx";
+import styles from './Board.module.css'
 export function Board(){
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isDrawing, setIsDrawing] = useState(false);
@@ -66,10 +67,11 @@ export function Board(){
 
     return (
         <>
-            <h2>рисовалка</h2>
-            <PointButton tool={'Кисть'}/>
-            <PointButton tool={'Стерка'}/>
-            <canvas
+            <div className={styles.toolbar}>
+                <PointButton tool={'Кисть'}/>
+                <PointButton tool={'Стерка'}/>
+            </div>
+            <canvas className={styles.canvas}
                 ref={canvasRef}
                 id="myCanvas"
                 style={{ border: "1px solid #d3d3d3" }}
